@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedido de Namoro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("https://source.unsplash.com/1600x900/?romantic") no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .question {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-family: 'Open Sans', sans-serif;
+            color: #d62b70;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .yes {
+            background: #d62b70;
+            color: white;
+        }
+
+        .no {
+            background: #d62b70;
+            color: white;
+        }
+
+        /* Ajustes para telas menores (como celulares) */
+        @media (max-width: 600px) {
+            .question {
+                font-size: 4em;
+            }
+            .btn {
+                padding: 20px 40px;
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div id="question" class="question"><i class="fas fa-stethoscope"></i> Victória, você quer unir nossos códigos e corações? (QUER NAMORAR COMIGO? PFV NUNCA TE PEDI NADA) <i class="fas fa-code"></i></div>
+        <div id="buttons" class="buttons">
+            <button id="yesButton" class="btn yes" onclick="handleYes()">Sim</button>
+            <button id="noButton" class="btn no">Não</button>
+        </div>
+    </div>
+    <script>
+        const noButton = document.getElementById('noButton');
+        const events = ['mouseover', 'touchstart'];
+        events.forEach((event) => {
+            noButton.addEventListener(event, (e) => {
+                e.preventDefault();
+                const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+                noButton.style.position = 'absolute';
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            });
+        });
+
+        function handleYes() {
+            if (window.confirm('Você tem certeza? Depois disso, você é do GeoGeo e não tem mais volta!')) {
+                document.getElementById('question').innerHTML = '<i class="fas fa-heart"></i> Victória! Agora você é do GeoGeo e não tem mais volta! <i class="fas fa-heart"></i>';
+                document.getElementById('buttons').innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>
